@@ -10,17 +10,19 @@
 
 #include "main.h"
 
+//----------- Edita estos pines en función de tu esquema de conexiones --------------------
 #define CS_PIN_GPIO_Port   AD7705_CS_GPIO_Port
 #define CS_PIN_Pin         AD7705_CS_Pin
 #define DRDY_PIN_GPIO_PORT AD7705_DRDY_GPIO_Port
 #define DRDY_PIN_PIN       AD7705_DRDY_Pin
+//-----------------------------------------------------------------------------------------
 
 #define CS_ON  0
 #define CS_OFF 1
 #define REG_WRITE  0x00
 #define REG_READ   0x08
 
-enum
+enum //Los diferentes registros del AD7705
 {
 	REG_COMM   = 0x00,
 	REG_SETUP  = 0x10,
@@ -32,7 +34,7 @@ enum
 	REG_GAIN   = 0x70
 }typedef eAD7705Registers;
 
-enum
+enum //Diferentes valores de ganancia aceptados por el AD7705
 {
 	GAINx1   = 0x00,
 	GAINx2   = 0x08,
@@ -44,7 +46,7 @@ enum
 	GAINx128 = 0x38
 }typedef eGain;
 
-enum
+enum //Diferentes modos de trabajo aceptados por el AD7705
 {
 	MODE_NORMAL     = 0x00,
 	MODE_SELF_CALIB = 0x40,
@@ -52,7 +54,7 @@ enum
 	MODE_FULL_SCALE = 0xB0
 }typedef eMode;
 
-enum
+enum //Selección de los diferentes canales de lectura del AD7705
 {
 	CH_AIN1_1 = 0x00,
 	CH_AIN2_1 = 0x01,
@@ -60,7 +62,7 @@ enum
 	CH_AIN12  = 0x03
 }typedef eChannel;
 
-enum
+enum //Selección de la frecuencia de conversión del AD7705
 {
 	HZ_20  = 0x00,
 	HZ_25  = 0x01,
